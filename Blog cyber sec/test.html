@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tutoriais de Cibersegurança - Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+<style>
+  body {
+  background-color: #121212; /* fundo preto escuro */
+  color: #e0e0e0; /* texto claro */
+  font-family: 'Roboto', sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #f5f5f5; /* quase branco */
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+}
+
+.card {
+  background-color: #1e1e1e; /* cinza escuro */
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* sombra branca sutil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #2a2a2a; /* borda discreta */
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+}
+
+.card h2 {
+  color: #f5f5f5; /* quase branco */
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+}
+
+.card p {
+  line-height: 1.5;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #cfcfcf; /* cinza claro */
+}
+
+</style>
+</head>
+<body>
+
+<h1>Tutoriais de Cibersegurança</h1>
+<p style="max-width: 700px; margin: 20px auto; color: #d0d0d0; font-size: 1.1rem; line-height: 1.6; text-align: center;">
+  Esta página tem como objetivo apresentar conteúdos educativos e detalhados sobre as principais ameaças e ataques no campo da cibersegurança. Por meio de tutoriais claros e fundamentados, buscamos capacitar usuários e profissionais para identificar, compreender e mitigar riscos, promovendo práticas seguras e a proteção eficaz de dados e sistemas.
+</p>
+
+<div class="cards-container">
+
+  <div class="card">
+    <h2>1. Como criar senhas fortes e gerenciá-las</h2>
+    <p>Senhas fortes são essenciais para a segurança das suas contas online. Use combinações de letras maiúsculas, minúsculas, números e símbolos.</p>
+    <p>Evite informações pessoais óbvias, como nomes ou datas.</p>
+    <p>Uma técnica é criar frases longas e usar as primeiras letras de cada palavra, incluindo números e símbolos.</p>
+    <p>Utilize gerenciadores de senhas para armazenar e organizar suas credenciais com segurança.</p>
+    <p>Ative a autenticação de dois fatores para uma camada extra de proteção.</p>
+    <p>Troque suas senhas regularmente e não reutilize a mesma em múltiplos sites.</p>
+  </div>
+
+  <div class="card">
+    <h2>2. Configurando autenticação de dois fatores (2FA)</h2>
+    <p>2FA adiciona uma camada extra ao processo de login, pedindo uma segunda confirmação além da senha.</p>
+    <p>Use apps como Google Authenticator ou Authy para gerar códigos temporários seguros.</p>
+    <p>Nunca ignore os códigos de recuperação — guarde-os em local seguro.</p>
+    <p>2FA reduz muito o risco de invasões, mesmo que a senha seja comprometida.</p>
+    <p>Ative essa função sempre que possível, especialmente em contas importantes.</p>
+    <p>Evite usar SMS para 2FA quando possível, pois é menos seguro.</p>
+  </div>
+
+  <div class="card">
+    <h2>3. Protegendo sua rede Wi-Fi doméstica</h2>
+    <p>Configure sua rede para usar criptografia WPA3 ou WPA2 para proteger os dados transmitidos.</p>
+    <p>Altere a senha padrão do roteador para uma senha forte e exclusiva.</p>
+    <p>Desative recursos vulneráveis como WPS, que podem facilitar invasões.</p>
+    <p>Monitore dispositivos conectados para detectar acessos não autorizados.</p>
+    <p>Mantenha o firmware do roteador sempre atualizado para corrigir falhas de segurança.</p>
+    <p>Considere usar uma rede separada para convidados, isolada da principal.</p>
+  </div>
+
+  <div class="card">
+    <h2>4. Como identificar e evitar ataques de phishing</h2>
+    <p>Phishing é uma técnica para enganar usuários e roubar informações pessoais.</p>
+    <p>Desconfie de links com erros de ortografia ou domínios estranhos.</p>
+    <p>Nunca forneça dados pessoais por meio de links recebidos por email ou mensagens não solicitadas.</p>
+    <p>Confirme sempre a autenticidade das solicitações de informação.</p>
+    <p>Use filtros antiphishing no navegador e mantenha antivírus atualizado.</p>
+    <p>Eduque-se para reconhecer sinais de phishing e evite cair em armadilhas.</p>
+  </div>
+
+  <div class="card">
+    <h2>5. Atualizando seus sistemas e softwares corretamente</h2>
+    <p>Manter sistemas e softwares atualizados corrige falhas de segurança que podem ser exploradas.</p>
+    <p>Ative atualizações automáticas sempre que possível para garantir proteção contínua.</p>
+    <p>Faça backup dos dados antes de grandes atualizações.</p>
+    <p>Evite softwares piratas que podem conter malwares.</p>
+    <p>Mantenha drivers e firmware dos dispositivos atualizados.</p>
+    <p>Esteja atento a avisos e patches de segurança dos fabricantes.</p>
+  </div>
+
+  <!-- Continuando dentro da <div class="cards-container"> -->
+
+<div class="card">
+  <h2>6. O que é Malware e como se proteger</h2>
+  <p>Malware é qualquer software malicioso projetado para danificar ou explorar sistemas.</p>
+  <p>Ele pode ser vírus, worms, trojans, ransomware, spyware, entre outros.</p>
+  <p>Evite baixar arquivos ou clicar em links suspeitos, especialmente de fontes não confiáveis.</p>
+  <p>Use antivírus atualizado e realize scans regulares.</p>
+  <p>Mantenha o sistema operacional e aplicativos atualizados para corrigir vulnerabilidades.</p>
+  <p>Eduque-se para reconhecer comportamentos estranhos no computador, como lentidão ou pop-ups inesperados.</p>
+</div>
+
+<div class="card">
+  <h2>7. Noções básicas sobre ransomware</h2>
+  <p>Ransomware é um tipo de malware que criptografa seus arquivos, exigindo resgate para liberá-los.</p>
+  <p>Ele geralmente chega por email phishing ou downloads inseguros.</p>
+  <p>Faça backups regulares e os mantenha offline para evitar perda permanente de dados.</p>
+  <p>Não pague o resgate — isso não garante recuperação e incentiva criminosos.</p>
+  <p>Mantenha antivírus ativo e atualizado para detectar ameaças.</p>
+  <p>Eduque usuários e funcionários para evitar clicar em links ou anexos suspeitos.</p>
+</div>
+
+<div class="card">
+  <h2>8. Como funciona um ataque de força bruta</h2>
+  <p>Força bruta é uma técnica onde o invasor tenta muitas senhas possíveis até encontrar a correta.</p>
+  <p>Senhas curtas e comuns facilitam esse tipo de ataque.</p>
+  <p>Use senhas longas e complexas para dificultar a tentativa.</p>
+  <p>Implementar bloqueio de conta após várias tentativas falhas ajuda a prevenir.</p>
+  <p>Autenticação multifator torna ataques de força bruta menos eficazes.</p>
+  <p>Monitorar logs de acesso pode indicar tentativas de ataque para resposta rápida.</p>
+</div>
+
+<div class="card">
+  <h2>9. Entendendo Cross-Site Scripting (XSS)</h2>
+  <p>XSS é uma vulnerabilidade onde scripts maliciosos são injetados em sites confiáveis.</p>
+  <p>Ela permite roubar cookies, tokens de sessão e informações do usuário.</p>
+  <p>Desenvolvedores devem usar validação e sanitização rigorosas de entradas do usuário.</p>
+  <p>Usuários devem evitar clicar em links suspeitos e manter navegador atualizado.</p>
+  <p>Ferramentas de segurança ajudam a detectar vulnerabilidades XSS em sites.</p>
+  <p>Manter backups facilita recuperação caso um ataque ocorra.</p>
+</div>
+
+<div class="card">
+  <h2>10. O que é CSRF e como se proteger</h2>
+  <p>Cross-Site Request Forgery (CSRF) é ataque que força usuários autenticados a executar ações indesejadas.</p>
+  <p>Ele explora a confiança do site no navegador do usuário.</p>
+  <p>Tokens anti-CSRF em formulários são essenciais para proteção.</p>
+  <p>Desenvolvedores devem validar requisições para garantir origem legítima.</p>
+  <p>Usuários devem evitar navegar em sites suspeitos enquanto autenticados.</p>
+  <p>Atualizar sistemas e frameworks minimiza riscos de vulnerabilidades.</p>
+</div>
+
+<div class="card">
+  <h2>11. Importância do backup e como fazer corretamente</h2>
+  <p>Backup é a cópia dos seus dados importantes para evitar perda em incidentes.</p>
+  <p>Deve ser feito regularmente e armazenado em local seguro, preferencialmente offline.</p>
+  <p>Utilize soluções automáticas para evitar esquecimentos.</p>
+  <p>Verifique periodicamente a integridade dos backups para garantir que podem ser restaurados.</p>
+  <p>Se possível, use diferentes mídias e locais para maior segurança.</p>
+  <p>Um backup eficiente minimiza impacto de ataques e falhas de hardware.</p>
+</div>
+
+<div class="card">
+  <h2>12. Princípios básicos da criptografia</h2>
+  <p>Criptografia transforma dados legíveis em código para proteção contra acesso não autorizado.</p>
+  <p>Ela usa algoritmos para cifrar e decifrar informações.</p>
+  <p>É essencial para proteger comunicações, arquivos e autenticações.</p>
+  <p>Existem criptografia simétrica (mesma chave) e assimétrica (chaves diferentes).</p>
+  <p>O uso correto protege dados pessoais e transações online.</p>
+  <p>Implementar criptografia nas aplicações é fundamental para segurança moderna.</p>
+</div>
+
+<div class="card">
+  <h2>13. O que é VPN e para que serve</h2>
+  <p>VPN cria um túnel seguro entre seu dispositivo e a internet, criptografando dados transmitidos.</p>
+  <p>Isso protege sua privacidade e impede espionagem em redes públicas.</p>
+  <p>Também permite acessar conteúdo bloqueado geograficamente.</p>
+  <p>Escolha provedores confiáveis que não armazenem logs de atividades.</p>
+  <p>Evite VPNs gratuitas que podem comprometer sua segurança.</p>
+  <p>Use VPN para conexões em redes Wi-Fi públicas sempre que possível.</p>
+</div>
+
+<div class="card">
+  <h2>14. Segurança na nuvem: dicas essenciais</h2>
+  <p>Armazenar dados na nuvem oferece conveniência, mas exige cuidados especiais.</p>
+  <p>Use senhas fortes e autenticação multifator para acesso aos serviços.</p>
+  <p>Revise permissões e compartilhe arquivos apenas com pessoas confiáveis.</p>
+  <p>Mantenha backup local dos dados mais importantes.</p>
+  <p>Conheça as políticas de segurança e privacidade do provedor da nuvem.</p>
+  <p>Desative serviços ou compartilhamentos desnecessários para minimizar riscos.</p>
+</div>
+
+<div class="card">
+  <h2>15. Como evitar ataques de phishing por email</h2>
+  <p>Verifique remetente e desconfie de mensagens com erros de ortografia ou links estranhos.</p>
+  <p>Não clique em anexos ou links sem verificar a autenticidade.</p>
+  <p>Use filtros de spam e antivírus para reduzir emails maliciosos.</p>
+  <p>Não forneça informações pessoais por email, principalmente financeiras.</p>
+  <p>Eduque-se para reconhecer técnicas comuns usadas por golpistas.</p>
+  <p>Em caso de dúvida, contate diretamente a empresa pelo canal oficial.</p>
+</div>
+<div class="card">
+  <h2>16. Autenticação Multifator (MFA)</h2>
+  <p>MFA é um método que exige mais de uma forma de verificação para acessar contas.</p>
+  <p>Além da senha, pode incluir códigos via app, biometria ou tokens físicos.</p>
+  <p>Isso dificulta o acesso não autorizado mesmo se a senha for comprometida.</p>
+  <p>Ative MFA sempre que disponível em serviços online.</p>
+  <p>É uma camada extra importante para proteger seus dados pessoais e corporativos.</p>
+  <p>Combinar MFA com boas práticas de senha aumenta muito sua segurança.</p>
+</div>
+
+<div class="card">
+  <h2>17. Segurança em redes Wi-Fi públicas</h2>
+  <p>Wi-Fi público é um dos principais alvos para ataques de interceptação.</p>
+  <p>Evite acessar contas sensíveis ou fazer transações bancárias nessas redes.</p>
+  <p>Use VPN para criptografar seu tráfego e dificultar espionagem.</p>
+  <p>Mantenha o firewall do seu dispositivo ativado.</p>
+  <p>Desative o compartilhamento de arquivos e pastas na rede pública.</p>
+  <p>Prefira sites com HTTPS para aumentar a proteção das suas conexões.</p>
+</div>
+
+<div class="card">
+  <h2>18. Como funcionam os Keyloggers</h2>
+  <p>Keylogger é um software ou hardware que registra as teclas digitadas.</p>
+  <p>Podem capturar senhas, mensagens e outras informações sensíveis.</p>
+  <p>Frequentemente são instalados por malware ou acesso físico ao dispositivo.</p>
+  <p>Use antivírus atualizado e evite baixar arquivos suspeitos.</p>
+  <p>Monitore processos ativos e desconfiar de lentidão inesperada.</p>
+  <p>Troque senhas periodicamente e use autenticação multifator para minimizar riscos.</p>
+</div>
+
+<div class="card">
+  <h2>19. Entendendo ataques de engenharia social</h2>
+  <p>Engenharia social explora a confiança e fraquezas humanas para obter acesso indevido.</p>
+  <p>Golpistas podem se passar por pessoas conhecidas ou autoridades.</p>
+  <p>Desconfie de pedidos urgentes ou que tentem causar pressão psicológica.</p>
+  <p>Confirme sempre a identidade do solicitante antes de fornecer informações.</p>
+  <p>Educação e conscientização são as melhores defesas contra esses ataques.</p>
+  <p>Empresas devem treinar funcionários para reconhecer tentativas de manipulação.</p>
+</div>
+
+<div class="card">
+  <h2>20. Uso seguro de senhas</h2>
+  <p>Senhas devem ser longas, complexas e únicas para cada conta.</p>
+  <p>Evite usar informações pessoais como datas ou nomes fáceis de adivinhar.</p>
+  <p>Utilize gerenciadores de senhas para criar e armazenar credenciais fortes.</p>
+  <p>Troque senhas periodicamente e não as compartilhe com ninguém.</p>
+  <p>Ative autenticação multifator sempre que possível.</p>
+  <p>Revise acessos e altere senhas se houver suspeita de vazamento.</p>
+</div>
+
+<div class="card">
+  <h2>21. Proteção contra ataques DDoS</h2>
+  <p>DDoS (Distributed Denial of Service) sobrecarrega servidores com tráfego malicioso.</p>
+  <p>Isso deixa sites ou serviços indisponíveis para usuários legítimos.</p>
+  <p>Empresas podem usar firewalls, filtros e serviços de mitigação especializados.</p>
+  <p>Monitoramento constante ajuda a identificar ataques rapidamente.</p>
+  <p>Escalar infraestrutura para suportar picos pode minimizar impacto.</p>
+  <p>Educação e planos de resposta são essenciais para preparação eficaz.</p>
+</div>
+
+<div class="card">
+  <h2>22. O que é um certificado SSL/TLS</h2>
+  <p>Certificado SSL/TLS garante conexão segura entre o navegador e o servidor.</p>
+  <p>Ele criptografa dados transmitidos, protegendo contra interceptações.</p>
+  <p>Sites com HTTPS possuem esses certificados, indicados por cadeado no navegador.</p>
+  <p>É obrigatório para sites que coletam informações pessoais ou financeiras.</p>
+  <p>Empresas devem renovar e configurar corretamente os certificados.</p>
+  <p>Usuários devem verificar se o site é seguro antes de inserir dados sensíveis.</p>
+</div>
+
+<div class="card">
+  <h2>23. O que são vulnerabilidades zero-day</h2>
+  <p>Zero-day são falhas desconhecidas pelos desenvolvedores e ainda sem correção.</p>
+  <p>Invasores exploram essas brechas antes que patches sejam lançados.</p>
+  <p>Atualizações regulares e monitoramento ajudam a reduzir riscos.</p>
+  <p>Ambientes isolados e práticas de defesa em profundidade são recomendadas.</p>
+  <p>Organizações devem investir em pesquisa e resposta rápida a incidentes.</p>
+  <p>Usuários devem manter software atualizado para se proteger contra ameaças conhecidas.</p>
+</div>
+
+<div class="card">
+  <h2>24. Segurança em dispositivos móveis</h2>
+  <p>Dispositivos móveis são alvos frequentes de ataques devido à mobilidade.</p>
+  <p>Use bloqueio por senha, PIN ou biometria para acesso ao aparelho.</p>
+  <p>Evite instalar apps de fontes desconhecidas ou não confiáveis.</p>
+  <p>Mantenha sistema e apps atualizados para corrigir vulnerabilidades.</p>
+  <p>Use VPN para conexões em redes Wi-Fi públicas.</p>
+  <p>Faça backup dos dados importantes regularmente.</p>
+</div>
+
+<div class="card">
+  <h2>25. O que é um firewall e como funciona</h2>
+  <p>Firewall é uma barreira que controla o tráfego entre redes, bloqueando acessos indesejados.</p>
+  <p>Ele pode ser de hardware, software ou ambos.</p>
+  <p>Define regras para permitir ou negar conexões baseado em IPs, portas e protocolos.</p>
+  <p>Ajuda a proteger contra invasões e ataques de rede.</p>
+  <p>Configuração adequada é fundamental para evitar brechas de segurança.</p>
+  <p>Empresas e usuários devem usar firewall para reforçar a defesa dos sistemas.</p>
+</div>
+
+
+
+</div>
+
+</body>
+</html>

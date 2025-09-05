@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ferramentas - Distros Linux</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      color: #333;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #111;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-left: 6px solid #0077cc;
+      padding: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: #0077cc;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #444;
+      margin: 0;
+    }
+
+    .card i {
+      margin-right: 8px;
+      color: #0077cc;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 80px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+      font-size: 1rem;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: auto;
+      padding: 24px 28px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 12px 0 20px 0;
+      color: #444;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        font-size: 14px;
+      }
+    }
+
+    .intro {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  background-color: #eef5fb;
+  padding: 20px 24px;
+  border-left: 4px solid #0077cc;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+  </style>
+</head>
+<body>
+   <h1><i class="fab fa-linux"></i> Ferramentas: Distros Linux para Segurança e Privacidade</h1>
+
+    <div class="intro">
+  <p>
+    <strong>O que é uma Distro Linux?</strong><br>
+    O termo <strong>"distro"</strong> vem de <em>distribuição</em>. Uma distro Linux é uma versão do sistema operacional Linux, montada com diferentes pacotes, ferramentas e propósitos. 
+  </p>
+  <p>
+    Algumas distros são feitas para uso geral, como navegar na internet, programar ou estudar. Outras, como as listadas abaixo, são <strong>especialmente criadas para segurança da informação</strong>, 
+    <strong>anonimato</strong>, <strong>análise forense</strong>, <strong>testes de invasão (pentest)</strong> e <strong>proteção da privacidade</strong>.
+  </p>
+  <p>
+    Cada uma dessas distribuições vem com ferramentas e configurações específicas para ajudar profissionais e entusiastas a proteger, analisar ou testar sistemas com foco em cibersegurança.
+  </p>
+</div>
+
+
+
+  <div class="grid" id="cards-container">
+    <!-- Cards inseridos via JS -->
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <div class="modal-content">
+      <span class="close" aria-label="Fechar modal">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <ul id="modal-list"></ul>
+      <p><strong>Site oficial:</strong> <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer">Visitar</a></p>
+    </div>
+  </div>
+
+  <script>
+    const distros = [
+      {
+        name: "Kali Linux",
+        icon: "fa-skull-crossbones",
+        desc: "Pentest, forense, engenharia reversa.",
+        more: [
+          "Ambiente: XFCE, GNOME, KDE",
+          "Tamanho: ~3.5 GB",
+          "Ferramentas: Metasploit, Nmap, Burp Suite",
+          "Privacidade: Médio"
+        ],
+        link: "https://kali.org"
+      },
+      {
+        name: "Tails OS",
+        icon: "fa-shield-alt",
+        desc: "Privacidade e anonimato com Tor.",
+        more: [
+          "Ambiente: GNOME customizado",
+          "Tamanho: ~1.3 GB",
+          "Ferramentas: Tor Browser, OnionShare, KeePassXC",
+          "Privacidade: Altíssimo"
+        ],
+        link: "https://tails.net"
+      },
+      {
+        name: "Parrot OS",
+        icon: "fa-feather-alt",
+        desc: "Pentest e dev seguro.",
+        more: [
+          "Ambiente: MATE",
+          "Tamanho: ~2.5 GB",
+          "Ferramentas: AnonSurf, Ghidra, SQLMap",
+          "Privacidade: Alto"
+        ],
+        link: "https://parrotsec.org"
+      },
+      {
+        name: "Qubes OS",
+        icon: "fa-cubes",
+        desc: "Segurança por virtualização.",
+        more: [
+          "Ambiente: XFCE",
+          "Tamanho: ~5 GB",
+          "Ferramentas: Isolamento por domínios (qubes)",
+          "Privacidade: Muito alto"
+        ],
+        link: "https://qubes-os.org"
+      },
+      {
+        name: "Whonix",
+        icon: "fa-user-secret",
+        desc: "Navegação anônima via Tor Gateway.",
+        more: [
+          "Ambiente: KDE, XFCE",
+          "Tamanho: ~1.6 GB",
+          "Modo dual VM: Gateway e Workstation",
+          "Privacidade: Máxima"
+        ],
+        link: "https://whonix.org"
+      },
+      {
+        name: "BlackArch",
+        icon: "fa-terminal",
+        desc: "Pentest avançado (2800+ ferramentas).",
+        more: [
+          "Ambiente: leve, terminal-friendly",
+          "Tamanho: ~15 GB (full)",
+          "Para usuários avançados",
+          "Privacidade: Médio"
+        ],
+        link: "https://blackarch.org"
+      },
+      {
+        name: "BackBox",
+        icon: "fa-tools",
+        desc: "Pentest e análise de vulnerabilidades.",
+        more: [
+          "Ambiente: XFCE",
+          "Tamanho: ~2.5 GB",
+          "Ferramentas: Metasploit, Wireshark, OpenVAS",
+          "Privacidade: Médio"
+        ],
+        link: "https://backbox.org"
+      },
+      {
+        name: "Fedora Security Lab",
+        icon: "fa-fire",
+        desc: "Testes de segurança e avaliação de riscos.",
+        more: [
+          "Ambiente: GNOME",
+          "Tamanho: ~3.6 GB",
+          "Ferramentas: OpenSCAP, Wireshark",
+          "Privacidade: Médio"
+        ],
+        link: "https://labs.fedoraproject.org/security/"
+      },
+      {
+        name: "Pentoo Linux",
+        icon: "fa-fire-alt",
+        desc: "Pentest com foco em performance.",
+        more: [
+          "Ambiente: XFCE",
+          "Tamanho: ~3 GB",
+          "Kernel otimizado para exploits",
+          "Privacidade: Médio"
+        ],
+        link: "https://pentoo.ch"
+      },
+      {
+        name: "SIFT Workstation",
+        icon: "fa-microscope",
+        desc: "Análise forense digital.",
+        more: [
+          "Ambiente: LXDE (em VM)",
+          "Tamanho: ~4 GB",
+          "Ferramentas: Sleuth Kit, Autopsy, Volatility",
+          "Privacidade: Baixo"
+        ],
+        link: "https://digital-forensics.sans.org"
+      },
+      {
+        name: "Security Onion",
+        icon: "fa-eye",
+        desc: "Monitoramento e detecção de intrusão.",
+        more: [
+          "Ambiente: GNOME",
+          "Tamanho: ~4.5 GB",
+          "Ferramentas: Zeek, Suricata, ELK Stack",
+          "Privacidade: Baixo"
+        ],
+        link: "https://securityonion.net"
+      },
+      {
+        name: "CAINE Linux",
+        icon: "fa-bug",
+        desc: "Computação forense e análise.",
+        more: [
+          "Ambiente: MATE",
+          "Tamanho: ~3.5 GB",
+          "Ferramentas: Autopsy, Sleuth Kit",
+          "Privacidade: Baixo"
+        ],
+        link: "https://www.caine-live.net"
+      },
+      {
+        name: "DEFT Linux",
+        icon: "fa-shield-virus",
+        desc: "Distribuição forense digital.",
+        more: [
+          "Ambiente: XFCE",
+          "Tamanho: ~2 GB",
+          "Ferramentas: FTK Imager, Autopsy",
+          "Privacidade: Baixo"
+        ],
+        link: "https://www.deftlinux.net"
+      },
+      {
+        name: "ArchStrike",
+        icon: "fa-archway",
+        desc: "Pentest e segurança em Arch Linux.",
+        more: [
+          "Ambiente: Leve, Arch-based",
+          "Tamanho: Variável",
+          "Ferramentas: Nmap, John The Ripper",
+          "Privacidade: Médio"
+        ],
+        link: "https://archstrike.org"
+      },
+      {
+        name: "Linux Kodachi",
+        icon: "fa-user-shield",
+        desc: "Privacidade e anonimato (VPN+Tor).",
+        more: [
+          "Ambiente: XFCE",
+          "Tamanho: ~3.7 GB",
+          "Ferramentas: VPN, Tor, DNSCrypt",
+          "Privacidade: Muito alto"
+        ],
+        link: "https://www.digi77.com/linux-kodachi/"
+      },
+      {
+        name: "Alpine Linux",
+        icon: "fa-lock",
+        desc: "Segurança por padrão e leveza.",
+        more: [
+          "Ambiente: Minimalista",
+          "Tamanho: ~130 MB",
+          "Foco: Segurança, simplicidade",
+          "Privacidade: Médio"
+        ],
+        link: "https://alpinelinux.org"
+      },
+      {
+        name: "Subgraph OS",
+        icon: "fa-user-shield",
+        desc: "Sistema seguro e resistente a ataques.",
+        more: [
+          "Ambiente: GNOME",
+          "Tamanho: ~3.5 GB",
+          "Ferramentas: Tor, sandboxing",
+          "Privacidade: Muito alto"
+        ],
+        link: "https://subgraph.com"
+      },
+      {
+        name: "Network Security Toolkit (NST)",
+        icon: "fa-network-wired",
+        desc: "Ferramentas de monitoramento e análise.",
+        more: [
+          "Ambiente: Fedora-based",
+          "Tamanho: ~3 GB",
+          "Ferramentas: Wireshark, Nmap, Snort",
+          "Privacidade: Médio"
+        ],
+        link: "https://networksecuritytoolkit.org"
+      },
+      {
+        name: "Bugtraq",
+        icon: "fa-bug",
+        desc: "Pentest, forense e segurança.",
+        more: [
+          "Ambiente: MATE",
+          "Tamanho: ~3.5 GB",
+          "Ferramentas: Metasploit, Wireshark, John The Ripper",
+          "Privacidade: Médio"
+        ],
+        link: "https://www.bugtraq-team.com"
+      },
+      {
+        name: "Samurai Web Testing Framework",
+        icon: "fa-sitemap",
+        desc: "Distribuição para testes de segurança web.",
+        more: [
+          "Ambiente: XFCE",
+          "Tamanho: ~3.5 GB",
+          "Ferramentas: Burp Suite, OWASP ZAP, w3af",
+          "Privacidade: Médio"
+        ],
+        link: "https://samurai.inguardians.com"
+      }
+    ];
+
+    const container = document.getElementById("cards-container");
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDesc = document.getElementById("modal-desc");
+    const modalList = document.getElementById("modal-list");
+    const modalLink = document.getElementById("modal-link");
+    const closeBtn = document.querySelector(".close");
+
+    distros.forEach(distro => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.setAttribute("tabindex", "0"); // Para foco teclado
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `Abrir detalhes da distribuição ${distro.name}`);
+      card.innerHTML = `
+        <h2><i class="fas ${distro.icon}"></i> ${distro.name}</h2>
+        <p>${distro.desc}</p>
+      `;
+
+      card.addEventListener("click", () => {
+        modalTitle.textContent = distro.name;
+        modalDesc.textContent = distro.desc;
+        modalList.innerHTML = distro.more.map(item => `<li>${item}</li>`).join("");
+        modalLink.href = distro.link;
+        modal.style.display = "block";
+        modal.focus();
+      });
+
+      // Abrir modal ao pressionar Enter ou Space no teclado
+      card.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          card.click();
+        }
+      });
+
+      container.appendChild(card);
+    });
+
+    closeBtn.onclick = () => (modal.style.display = "none");
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+
+    // Fechar modal com Esc
+    window.addEventListener("keydown", e => {
+      if (e.key === "Escape" && modal.style.display === "block") {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>

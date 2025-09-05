@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Z-segurity</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;
+    }
+    body {
+      background: #212121; color: #333;
+    }
+
+    header {
+      background: #1d2942; color: #fff; text-align: center; padding: 40px 20px;
+    }
+    header h1 {
+      font-size: 2em; margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.1em;
+    }
+
+    .contact-options {
+      display: flex; justify-content: center; gap: 30px; padding: 40px 20px; flex-wrap: wrap;
+    }
+    .option {
+      background: #fff; border-radius: 12px; padding: 25px; width: 280px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .option h3 {
+      margin: 15px 0; font-size: 1.2em;
+    }
+    .option p {
+      font-size: 0.9em; color: #555; margin-bottom: 20px;
+    }
+    .option button {
+      background: #f58220; color: #fff; border: none; padding: 12px 18px; border-radius: 6px; cursor: pointer; font-weight: bold;
+    }
+    .option button:hover {
+      background: #d66f1b;
+    }
+    .option button a {
+      color: white; text-decoration: none;
+    }
+
+    .offices {
+      padding: 40px 20px;
+    }
+    .offices h2 {
+      text-align: center; margin-bottom: 30px;
+    }
+    .office-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+    }
+    .office {
+      background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .office img {
+      width: 100%; height: 160px; object-fit: cover;
+    }
+    .office .info {
+      padding: 15px;
+    }
+    .office h3 {
+      margin-bottom: 10px;
+    }
+    .office p {
+      font-size: 0.9em; color: #555;
+    }
+    .office .phone {
+      margin-top: 10px; font-weight: bold; color: #1d2942;
+    }
+
+    footer {
+      background: #111; color: #bbb; padding: 40px 20px;
+    }
+    footer .footer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 30px; margin-bottom: 30px;
+    }
+    footer h4 {
+      margin-bottom: 15px; color: #fff;
+    }
+    footer ul {
+      list-style: none;
+    }
+    footer ul li {
+      margin-bottom: 8px; font-size: 0.9em;
+    }
+    footer li a {
+      text-decoration: none;
+      color: white;
+    }
+    footer .subscribe {
+      display: flex; gap: 10px;
+    }
+    footer input {
+      padding: 8px; flex: 1; border: none; border-radius: 4px;
+    }
+    footer button {
+      padding: 8px 14px; background: #f58220; border: none; color: #fff; border-radius: 4px; cursor: pointer;
+    }
+    footer button:hover {
+      background: #d66f1b;
+    }
+    footer .bottom {
+      text-align: center; border-top: 1px solid #333; padding-top: 15px; font-size: 0.85em;
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal {
+      background: white;
+      border-radius: 24px;
+      width: 600px;
+      max-width: 90%;
+      padding: 30px 40px 40px 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+
+    .modal h2 {
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 25px;
+      line-height: 1.2;
+    }
+
+    .modal p.description {
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .modal p.description:last-of-type {
+      margin-bottom: 40px;
+    }
+
+    .modal form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 25px;
+    }
+
+    .modal form input,
+    .modal form select {
+      padding: 12px 14px;
+      font-size: 14px;
+      border: 1.5px solid #dbe6f1;
+      border-radius: 12px;
+      outline: none;
+      color: #2b3b56;
+    }
+
+    .modal form input::placeholder,
+    .modal form select {
+      color: #aab7c4;
+    }
+
+    .modal form select {
+      cursor: pointer;
+    }
+
+    .modal form select option {
+      color: black;
+    }
+
+    .modal button[type="submit"] {
+      grid-column: span 2;
+      background-color: #3dabff;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 15px 0;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal button[type="submit"]:hover {
+      background-color: #1e90ff;
+    }
+
+    .modal .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 22px;
+      color: #444;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+    }
+
+    .modal .close-btn:hover {
+      color: #000;
+    }
+
+    /* Text on top right inside modal */
+    .modal .top-text {
+      font-size: 12px;
+      color: #444;
+      text-align: right;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Entre em contato conosco</h1>
+    <p>Nossa equipe dedicada está aqui para ajudar você. Selecione o objetivo da sua solicitação abaixo.</p>
+  </header>
+
+  <section class="contact-options">
+    <div class="option">
+      <img src="https://img.icons8.com/ios/100/000000/box--v1.png" width="50" />
+      <h3>Solicite uma demonstração</h3>
+      <p>Entre em contato com nossa equipe de vendas para responder a perguntas sobre preços e soluções.</p>
+      <button>Solicite uma demonstração</button>
+    </div>
+    <div class="option">
+      <img src="https://img.icons8.com/ios/100/000000/survey.png" width="50" />
+      <h3>Inquérito Geral</h3>
+      <p>Para todas as outras dúvidas, incluindo reclamações, entre em contato conosco.</p>
+      <button id="btnInquerito">Inquérito Geral</button>
+    </div>
+    <div class="option">
+      <img src="https://img.icons8.com/ios/100/000000/customer-support.png" width="50" />
+      <h3>Suporte ao cliente</h3>
+      <p>Precisa de ajuda com a plataforma? Fale com nossa equipe de suporte hoje mesmo.</p>
+      <button><a href="suporte.html">Suporte ao cliente</a></button>
+    </div>
+  </section>
+
+  <section class="offices">
+    <h2>Nossos escritórios globais</h2>
+    <div class="office-grid">
+      <div class="office">
+        <img src="img/angola.jpg" alt="Sede" />
+        <div class="info">
+          <h3>Luanda</h3>
+          <p>Angola ,Talatona, Baia</p>
+          <p class="phone">+244 943396177</p>
+        </div>
+      </div>
+      <div class="office">
+        <img src="img/brasil.jpg" alt="América do Norte" />
+        <div class="info">
+          <h3>Brasil</h3>
+          <p>Brasil , Rio de janeiro</p>
+          <p class="phone">+55 (21) 91234-5678</p>
+        </div>
+      </div>
+      <div class="office">
+        <img src="img/tg.jpg" alt="Dublin" />
+        <div class="info">
+          <h3>Portugal</h3>
+          <p>Portugal , Lisboa</p>
+          <p class="phone">+351 912 345 678</p>
+        </div>
+      </div>
+      <div class="office">
+        <img src="img/bronx.jpg" alt="Londres" />
+        <div class="info">
+          <h3>South bronx</h3>
+          <p>614 Courtlandt Ave, Matt harvey, 364 E. 151st St</p>
+          <p class="phone">+1 (718) 555-1234</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Produtos</h4>
+        <ul>
+          <li>Automação de conscientização</li>
+          <li>Simulação de Phishing</li>
+          <li>Biblioteca de eLearning</li>
+          <li>Gestão de Políticas</li>
+          <li>Gestão de Privacidade</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Setores</h4>
+        <ul>
+          <li>Serviços financeiros</li>
+          <li>Governos</li>
+          <li>Empresas</li>
+          <li>Educação</li>
+          <li>Saúde</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Sobre</h4>
+        <ul>
+          <li><a href="index.html">pagina inicial</a></li>
+        <li><a href="sobre.html">Sobre nós</a></li>
+        <li><a href="test.html">Dicas de sec</a></li>
+        <li><a href="Z-segurity.html">contacte-nos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Lista de discussão</h4>
+        <div class="subscribe">
+          <input type="email" placeholder="E-mail de trabalho" />
+          <button>Enviar</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">© 2025 Z-segurity - Todos os direitos reservados</div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2 id="modalTitle">inquerito gerais</h2>
+      <p class="top-text">Todos os campos são obrigatórios. Utilize seu endereço de e-mail corporativo.</p>
+      <p class="description">
+        As informações pessoais que você nos fornece neste formulário serão usadas apenas pela MetaCompliance (como Controladora de Dados) para os seguintes propósitos especificamente definidos:
+
+enviar por e-mail o conteúdo que você solicitou de nós
+com o seu consentimento, ocasionalmente enviar-lhe e-mails com informações direcionadas sobre as nossas ofertas de serviços
+honrar continuamente qualquer solicitação de cancelamento que você enviar no futuro
+cumprir com qualquer uma de nossas obrigações legais e/ou regulatórias
+      </p>
+      <p class="description">
+        A demonstração leva apenas 30 minutos do seu tempo e você não precisa instalar nenhum software.
+      </p>
+
+      <form action="https://formsubmit.co/zsegurityofcial@gmail.com" method="POST">
+  <input type="text" name="Primeiro nome" placeholder="Primeiro nome" required />
+  <input type="text" name="Sobrenome" placeholder="Sobrenome" required />
+  <input type="email" name="Email" placeholder="E-mail de trabalho" required />
+  <input type="tel" name="Telefone" placeholder="Número de telefone" required />
+  <input type="text" name="Cargo" placeholder="Cargo" required />
+  <input type="text" name="Empresa" placeholder="Nome da empresa" required />
+
+  <select name="Funcionários" required>
+    <option value="" disabled selected>Quantos funcionários trabalham lá?</option>
+    <option value="1-10">1-10</option>
+    <option value="11-50">11-50</option>
+    <option value="51-200">51-200</option>
+    <option value="201-500">201-500</option>
+    <option value="500+">500+</option>
+  </select>
+
+  <select name="País" required>
+    <option value="" disabled selected>Escolha seu país</option>
+    <option value="Brasil">Brasil</option>
+    <option value="Portugal">Portugal</option>
+    <option value="Angola">Angola</option>
+    <option value="Moçambique">Moçambique</option>
+    <option value="Outros">Outros</option>
+  </select>
+
+  <!-- Campos ocultos para personalização -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_autoresponse" value="Recebemos seu contato! Em breve retornaremos.">
+  <input type="hidden" name="_next" value="https://zsegurity.com/obrigado.html"> <!-- Mude para sua URL de agradecimento -->
+
+  <button type="submit">ENVIAR</button>
+</form>
+
+    </div>
+  </div>
+
+  <script>
+    const btnInquerito = document.getElementById('btnInquerito');
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+
+    btnInquerito.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // evita scroll atrás do modal
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    // Fechar modal ao clicar fora dele
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+
+</body>
+</html>

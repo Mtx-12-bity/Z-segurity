@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre - Z SECURITY</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 2em;
+    }
+
+    .sobre, .formulario {
+      background-color: #fff;
+      padding: 1.5em;
+      margin-bottom: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.8em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #000;
+      color: #fff;
+      padding: 0.8em 1.2em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+      footer {
+      background: #111; color: #bbb; padding: 40px 20px;
+    }
+    footer .footer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 30px; margin-bottom: 30px;
+    }
+    footer h4 {
+      margin-bottom: 15px; color: #fff;
+    }
+    footer ul {
+      list-style: none;
+    }
+    footer ul li {
+      margin-bottom: 8px; font-size: 0.9em;
+    }
+    footer li a {
+      text-decoration: none;
+      color: white;
+    }
+    footer .subscribe {
+      display: flex; gap: 10px;
+    }
+    footer input {
+      padding: 8px; flex: 1; border: none; border-radius: 4px;
+    }
+    footer button {
+      padding: 8px 14px; background: #f58220; border: none; color: #fff; border-radius: 4px; cursor: pointer;
+    }
+    footer button:hover {
+      background: #d66f1b;
+    }
+    footer .bottom {
+      text-align: center; border-top: 1px solid #333; padding-top: 15px; font-size: 0.85em;
+    }
+
+    #mensagemStatus {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Z - SECURITY</h1>
+  </header>
+
+  <main>
+    <section class="sobre">
+      <h2>Sobre</h2>
+      <p>Bem-vindo à <strong>Z - SECURITY</strong>, um projeto criado por mim, <strong>Matias F. Zanga</strong>. Este site nasceu com a missão de educar e informar sobre cibersegurança de forma simples e acessível.</p>
+      <p>Fazemos parte de uma rede de jovens criadores com vários projetos incríveis:</p>
+      <ul>
+        <li>💻  <strong>Techvision</strong> – Sites  de tecnologias.</li>
+        <li>🎬 <strong>Tv cine+</strong> – Site de filmes e séries.</li>
+        <li>🌀 <strong>Arioanime</strong> – Conteúdo sobre anime e manga.</li>
+        <li>✈️ <strong>Aurevia</strong> – Site de viagens, Descubra mundos, crie memórias.</li>
+      </ul>
+
+      <p>O nosso grupo tem como objetivo unir criatividade, educação e cultura para criar conteúdos relevantes e acessíveis. Todos os projetos são independentes, mas partilham uma missão comum: usar a tecnologia para informar, entreter e inspirar.</p>
+    </section>
+
+    <section class="formulario">
+      <h2>Envia-nos uma mensagem</h2>
+      <form id="contactForm">
+        <input type="text" name="user_name" placeholder="Teu nome" required>
+        <input type="email" name="user_email" placeholder="Teu e-mail" required>
+        <textarea name="message" placeholder="Escreve a tua mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+        <p id="mensagemStatus"></p>
+      </form>
+    </section>
+  </main>
+
+    <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Produtos</h4>
+        <ul>
+          <li>Automação de conscientização</li>
+          <li>Simulação de Phishing</li>
+          <li>Biblioteca de eLearning</li>
+          <li>Gestão de Políticas</li>
+          <li>Gestão de Privacidade</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Setores</h4>
+        <ul>
+          <li>Serviços financeiros</li>
+          <li>Governos</li>
+          <li>Empresas</li>
+          <li>Educação</li>
+          <li>Saúde</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Sobre</h4>
+        <ul>
+          <li><a href="index.html">pagina inicial</a></li>
+        <li><a href="sobre.html">Sobre nós</a></li>
+        <li><a href="test.html">Dicas de sec.</a></li>
+        <li><a href="Z-segurity.html">contacte-nos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Lista de discussão</h4>
+        <div class="subscribe">
+          <input type="email" placeholder="E-mail de trabalho" />
+          <button>Enviar</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">© 2025 Z-segurity - Todos os direitos reservados</div>
+  </footer>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    // Inicializar EmailJS
+    (function(){
+      emailjs.init("SEU_PUBLIC_KEY_AQUI"); // <- substitui com a tua public key
+    })();
+
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", this)
+        .then(function(response) {
+          document.getElementById("mensagemStatus").innerText = "✅ Mensagem enviada com sucesso!";
+        }, function(error) {
+          document.getElementById("mensagemStatus").innerText = "❌ Erro ao enviar. Tenta novamente.";
+        });
+
+      this.reset();
+    });
+  </script>
+</body>
+</html>
